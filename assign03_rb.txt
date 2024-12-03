@@ -21,4 +21,45 @@
 	
 
 
+Colin Swain
+
+Question 5 rev ( inorder ( reflect x ) ) = inorder x:
+
+Base Case: for Empty Tree [] as [] is minimal structure
+
+	reflect [] -> [], inorder [] -> []. rev -> [] == inorder [] --> [] = []
+	Empty set [] is equal to each other, Base case is proved.
+
+Inductive Step:
+	Now assuming that logic holds for l(left subtree) and r(right subtree) ie
+	
+	rev ( inorder ( reflect l ) ) = inorder l && rev ( inorder ( reflect r ) ) = inorder r
+
+	Does rev ( inorder ( reflect Node(r,s,l) ) ) = inorder Node(r,s,l) is true?
+
+	LHS = inorder Node(r,s,l) 
+	
+	RHS = reflect (Node(r , s, l) -> rev (inorder Node(reflect r, s, reflect l)
+
+		
+Question 6  postorder ( reflect x ) = rev ( preorder x )
+
+Base Case for Empty set as minimal structure is
+	LHS
+	reflect [] ->, postorder -> []	
+	RHS
+	preorder [] -> [], rev [] -> []
+
+	[] == [], passes Base Case;
+Inductive Step:
+	Assume true for both l and right subtree, ie holding base case proof for l and r,
+	
+	LHS
+	postorder( reflect Node(r,s,l) -> postorder(Node(reflect r, s, reflect l)
+	
+	RHS
+	rev( preorder Node(r,s,l) ) ->
+	
+
+
 
