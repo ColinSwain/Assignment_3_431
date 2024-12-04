@@ -91,12 +91,18 @@ Inductive Step:
 	
 	rev ( inorder ( reflect l ) ) = inorder l && rev ( inorder ( reflect r ) ) = inorder r
 
-	Does rev ( inorder ( reflect Node(r,s,l) ) ) = inorder Node(r,s,l) is true?
+	Does rev ( inorder ( reflect Node(l,s,r) ) ) == inorder Node(l,s,r)?
 
-	LHS = inorder Node(r,s,l) 
+	LHS = inorder Node(l,s,r) 
+	   ->inorder(l) @ s @ inorder(r)
 	
 	RHS = reflect (Node(r , s, l) -> rev (inorder Node(reflect r, s, reflect l)
+	    -> rev( inorder reflect r @ s inorder reflect l)
+	-> after reversing we get inorder reflect l @ s @ inorder reflect of l
+	In this case the reflect is stored to represent having more leaves of the
+	tree, but effectively can be rewritten as inorder l @ s @ inorder r
 
+	RHS == LHS, passes structural induction
 		
 Question 6  postorder ( reflect x ) = rev ( preorder x )
 
@@ -109,13 +115,21 @@ Base Case for Empty set as minimal structure is
 	[] == [], passes Base Case;
 Inductive Step:
 	Assume true for both l and right subtree, ie holding base case proof for l and r,
+	IH == postorder ( reflect l ) = rev ( preorder l )
+		postorder ( reflect r ) = rev ( preorder r )
 	
 	LHS
-	postorder( reflect Node(r,s,l) -> postorder(Node(reflect r, s, reflect l)
+	postorder( reflect Node(l,s,r) -> postorder(Node(reflect r, s, reflect l)
+	->postorder(reflect r) @ postorder( reflect l) @ s
 	
 	RHS
-	rev( preorder Node(r,s,l) ) ->
+	rev( preorder Node(r,s,l) ) ->rev(s @ preorder l @ prouder r)
+	-> preorder r @preorder l @ s
+
 	
+	
+	furthermore once proved and using IH we find that 
+	preorder r @ preorder l @ s == preorder r @ preorder l @ s
 
 
 
