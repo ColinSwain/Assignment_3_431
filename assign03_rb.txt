@@ -1,3 +1,59 @@
+Marcus Bollacker(1-2):
+
+1. Given lambda expressions A and B, show a lambda expression for
+ if A then false else B
+ Simplify (i.e. apply any feasible beta-reduction) as much as possible.
+
+If A then false else B 
+
+Simplification: A false B
+
+Proof:
+
+If A = true
+
+(λx.λy.x) false B
+
+λy.false
+
+If A = false
+
+(λx.λy.y) false B
+
+λy.y
+
+B
+
+
+
+2. Given lambda expressions A and B, show a lambda expression for
+ A implies (not B)
+ Simplify (i.e. apply any feasible beta-reduction) as much as possible
+
+ 
+If A is true, then B is negated
+If A is false, the result is true
+
+Simplification: A (B false true) false
+
+Proof: 
+
+If A = true
+
+(λx.λy.x) (B false true) false
+
+(B false true)
+
+
+
+If A = false
+
+(λx.λy.y) (B false true) false
+
+false
+
+
+
 #Ryan B
 
 # .) question 3
